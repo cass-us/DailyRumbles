@@ -193,6 +193,7 @@ export default function StoriesHero() {
         </div>
       )}
 
+      
       {selectedStory && (
         <div className="bg-white bg-opacity-90 p-8 rounded-2xl shadow w-full max-w-3xl mt-6 text-black">
           <img
