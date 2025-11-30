@@ -58,7 +58,7 @@ const Hero = () => {
     );
   }, []);
 
-  // Three.js full-screen background
+  
   useEffect(() => {
     const mount = mountRef.current;
 
@@ -76,14 +76,14 @@ const Hero = () => {
     renderer.setPixelRatio(window.devicePixelRatio);
     mount.appendChild(renderer.domElement);
 
-    // Lights
+    
     const ambientLight = new THREE.AmbientLight(0xffffff, 1);
     scene.add(ambientLight);
     const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
     directionalLight.position.set(5, 10, 7.5);
     scene.add(directionalLight);
 
-    // Load GLB
+    
     let model;
     const loader = new GLTFLoader();
     loader.load(
@@ -104,15 +104,15 @@ const Hero = () => {
       requestAnimationFrame(animate);
       const t = clock.getElapsedTime();
       if (model) {
-        model.rotation.y += 0.003; // slow rotation
-        model.position.y = Math.sin(t) * 0.1; // floating effect
-        model.position.x = Math.sin(t / 2) * 0.05; // subtle sway
+        model.rotation.y += 0.003; 
+        model.position.y = Math.sin(t) * 0.1; 
+        model.position.x = Math.sin(t / 2) * 0.05; 
       }
       renderer.render(scene, camera);
     };
     animate();
 
-    // Handle resize
+    
     const handleResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
@@ -131,13 +131,13 @@ const Hero = () => {
       ref={heroRef}
       className="relative w-full h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white overflow-hidden"
     >
-      {/* Three.js Canvas */}
+      
       <div
         ref={mountRef}
         className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none"
       />
 
-      {/* NAVBAR */}
+      
       <nav className="relative z-10 w-full flex items-center justify-between max-w-6xl mx-auto py-6 px-6">
         <div className="text-2xl font-extrabold flex items-center gap-1">
           <span className="text-yellow-400">Daily</span>
@@ -157,9 +157,9 @@ const Hero = () => {
         </button>
       </nav>
 
-      {/* HERO CONTENT */}
+      
       <div className="relative z-10 max-w-6xl mx-auto flex flex-col md:flex-row gap-12 items-start h-full px-6">
-        {/* Left: Recent Articles */}
+      
         <div className="flex flex-col gap-8 w-full md:w-1/3">
           {articles.map((article, i) => (
             <div
@@ -196,8 +196,6 @@ const Hero = () => {
             </div>
           ))}
         </div>
-
-        {/* Right: Hero Title & Subtitle */}
         <div className="flex-1 flex flex-col justify-center md:pl-12 text-center md:text-left">
           <h2
             ref={titleRef}
